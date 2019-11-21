@@ -207,8 +207,24 @@ print(words)
  *
  * 7. Escribir el ejercicio anterior con una función recursiva.
  *
+ *
+ * Repositorio: https://github.com/ColadaFF/scala-fundamentals
  */
 
 
+def unicodeProduct(value: String): Long = {
+  var result = 1L
+  for(char <- value) {
+    result = result * char.toLong
+  }
+  result
+}
 
+
+def unicodeProductRecursive(value: String): Long = {
+  if(value.isEmpty) 1L
+  else value.head * unicodeProductRecursive(value.tail)
+}
+
+def printLine(value: String) = {}
 

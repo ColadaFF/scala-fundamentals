@@ -17,6 +17,7 @@ public class NumberTest {
                 //.min();
 
 
+
         for (int i = 0; i < 10; i++) {
             if(i > 6){
                 break;
@@ -24,5 +25,7 @@ public class NumberTest {
         }
 
         sumAll(1, 2, 3, 4, 5, 6);
+
+
     }
 }
