@@ -192,7 +192,7 @@ case class PersonCase(firstName: String, lastName: String)
 
 
 val personCase = PersonCase("Andres", "Perez")
-val personCase2 =  PersonCase("Andres", "Perez")
+val personCase2 = PersonCase("Andres", "Perez")
 
 personCase.equals(personCase2)
 
@@ -226,24 +226,132 @@ case object InvalidPolicy {
  * de los valores esté en mayúscula y el valor retornado por el método
  * toString() retorne en minúscula.
  *
- *  Implementar usando case classes y case objects
+ * Implementar usando case classes y case objects
  *
  *  6. Escibir una clase Cat que reciba el color y la comida del gato.
  *
  *  7. Implementar la anterior clase Counter con los metodos increment
- *  y decrement usando case classes
+ * y decrement usando case classes
  *
  *  8. Implementar el código para representar los siguientes objetos
  *
- *  Una cuenta de ahorros que tiene un balance metodos para depositar
- *  y para debitar
- *  Una cuenta corriente que tiene un balance metodos para depositar
- *  y para debitar
- *  Una cuenta vacia, cuyo balance es siempre 0 y los metodos para
- *  depositar y para debitar lanzan una excepción.
+ * Una cuenta de ahorros que tiene un balance y metodos para depositar
+ * y para debitar
+ * Una cuenta corriente que tiene un balance metodos para depositar
+ * y para debitar
+ * Una cuenta vacia, cuyo balance es siempre 0 y los metodos para
+ * depositar y para debitar lanzan una excepción.
  *
- *  Tip: lanzar una excepción de Java.
+ * Tip: lanzar una excepción de Java.
+ *
+ * Repositorio: https://github.com/ColadaFF/scala-fundamentals
  *
  */
+
+object Conversions {
+  def inchesToCentimeters(value: Double): Double = ???
+
+  def gallonsToLiters(value: Double): Double = ???
+
+  def milesToKilometers(value: Double): Double = ???
+}
+
+abstract class UnitConversions {
+  def apply(value: Double): Double
+
+  def apply(value: Float): Float
+}
+
+object InchesToCentimeters extends UnitConversions {
+  override def apply(value: Double) = ???
+
+  override def apply(value: Float) = ???
+}
+
+object GallonsToLiters extends UnitConversions {
+  override def apply(value: Double) = ???
+
+  override def apply(value: Float) = ???
+}
+
+object MilesToKilometers extends UnitConversions {
+  override def apply(value: Double) = ???
+
+  override def apply(value: Float) = ???
+}
+
+
+InchesToCentimeters(3.14)
+GallonsToLiters(3.14)
+MilesToKilometers(3.14)
+
+
+class Point(var x: Int, val y: Int)
+
+object Point {
+  def apply(x: Int, y: Int): Point = new Point(x, y)
+}
+
+Point(2, 3)
+
+// 5
+
+
+object Colors extends Enumeration {
+  val YELLOW = Value("yellow")
+  val RED = Value("red")
+  val BLUE = Value("blue")
+}
+
+
+case class Cat(color: String, food: String)
+
+
+case class Counter(initialValue: Int = 0, adder: Adder) {
+  def inc: Counter = this.copy(initialValue = initialValue + 1)
+
+  def dec: Counter = ???
+}
+
+type Amount = BigDecimal
+type Balance = BigDecimal
+
+abstract class Account(balance: Balance) {
+  final def debit(amount: Amount) = ???
+  def credit(amount: Amount) = ???
+}
+
+case class SavingsAccount(balance: Balance) extends Account(balance)
+
+case object EmptyAccount extends Account(0)  {
+
+}
+
+
+trait JsValue
+
+case class JsString(value: String) extends JsValue
+
+case class JsNumber(value: Number) extends JsValue
+
+case object JsNull extends JsValue
+
+trait JsBoolean extends JsValue
+
+case object JsTrue extends JsBoolean
+
+case object JsFalse extends JsBoolean
+
+
+def isFalse(x: JsValue) = x match {
+  case JsString(value) =>
+  case JsNumber(value) =>
+  case JsNull =>
+  case boolean: JsBoolean if boolean.asInstanceOf[JsFalse] =>
+  case _ =>
+}
+
+// Trait
+// Pattern matching
 
 

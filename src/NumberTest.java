@@ -1,8 +1,10 @@
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.math.BigInteger;
 
 public class NumberTest {
     public static void sumAll(Integer ...values) {
-
+        throw new NotImplementedException();
     }
 
 
@@ -26,6 +28,8 @@ public class NumberTest {
 
         sumAll(1, 2, 3, 4, 5, 6);
 
+
+        String.format("Move on: %s %s", "Luke", "Padman");
 
     }
 }
